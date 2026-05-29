@@ -204,7 +204,18 @@ def find_matches(
             )
 
     results.sort(key=lambda r: r.confidence_score, reverse=True)
-    return results
+
+    # Greedy 1-to-1 deduplication: each trip and each order appears at most once.
+    # Best-scoring match wins when there is a conflict.
+    used_trips: set[str] = set()
+    used_orders: set[str] = set()
+    deduped: list[MatchResult] = []
+    for r in results:
+        if r.trip.trip_id not in used_trips and r.order.order_id not in used_orders:
+            deduped.append(r)
+            used_trips.add(r.trip.trip_id)
+            used_orders.add(r.order.order_id)
+    return deduped
 
 
 # ---------------------------------------------------------------------------

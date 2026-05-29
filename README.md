@@ -64,7 +64,7 @@ eco-match-engine/
 ## Quick start
 
 ```bash
-git clone https://github.com/your-username/eco-match-engine
+git clone https://github.com/KippieG/eco-match-engine
 cd eco-match-engine
 
 pip install -r requirements.txt
@@ -125,14 +125,14 @@ tests/test_matcher.py::TestFindMatches::test_sorted_by_confidence PASSED
 
 ## Business impact (mock data baseline)
 
-Running the engine against the included dataset (4 outbound trips, 5 open orders, 50 km radius, 6h window):
+Running the engine against the included dataset (5 outbound trips, 5 open orders, 50 km radius, 6h window):
 
 | KPI | Value |
 |---|---|
 | Matches found | 4 |
 | Revenue unlocked | €7,170 |
-| CO₂ saved | ~689 kg |
-| Diesel cost avoided | ~€521 |
+| CO₂ saved | ~655 kg |
+| Diesel cost avoided | ~€550 |
 
 Scale this to a real fleet of 200+ trailers and the numbers become significant — especially for CSR reporting.
 
