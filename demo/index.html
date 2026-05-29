@@ -10,29 +10,31 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ecs-navy:   #0A1F3C;
-      --ecs-blue:   #0B4A8B;
-      --ecs-teal:   #00A878;
-      --ecs-teal-lt:#E6F7F2;
-      --ecs-amber:  #F5A623;
-      --ecs-slate:  #4A5568;
-      --ecs-gray:   #F4F6F9;
-      --ecs-border: #E2E8F0;
-      --ecs-white:  #FFFFFF;
-      --font-head:  'Space Grotesk', sans-serif;
-      --font-body:  'DM Sans', sans-serif;
+      --ecs-red:      #8D1D45;
+      --ecs-red-dk:   #6B1535;
+      --ecs-red-lt:   #FDF0F5;
+      --ecs-yellow:   #F8CE3E;
+      --ecs-yellow-dk:#C9A010;
+      --ecs-yellow-lt:#FFFBEA;
+      --ecs-dark:     #1C0D14;
+      --ecs-slate:    #5A5060;
+      --ecs-gray:     #F5F4F6;
+      --ecs-border:   #E8E2E6;
+      --ecs-white:    #FFFFFF;
+      --font-head:    'Space Grotesk', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
     }
 
     body {
       font-family: var(--font-body);
       background: var(--ecs-gray);
-      color: var(--ecs-navy);
+      color: var(--ecs-dark);
       min-height: 100vh;
     }
 
     /* ── Top nav ── */
     nav {
-      background: var(--ecs-navy);
+      background: var(--ecs-red);
       padding: 0 2rem;
       display: flex;
       align-items: center;
@@ -41,6 +43,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 2px 16px rgba(141,29,69,0.35);
     }
     .nav-logo {
       display: flex;
@@ -51,13 +54,14 @@
     .nav-logo-mark {
       width: 32px;
       height: 32px;
-      background: var(--ecs-teal);
+      background: var(--ecs-yellow);
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
-    .nav-logo-mark svg { width: 18px; height: 18px; fill: #fff; }
+    .nav-logo-mark svg { width: 18px; height: 18px; fill: var(--ecs-red); }
     .nav-logo-text {
       font-family: var(--font-head);
       font-size: 15px;
@@ -65,14 +69,14 @@
       color: #fff;
       letter-spacing: -0.01em;
     }
-    .nav-logo-text span { color: var(--ecs-teal); }
+    .nav-logo-text span { color: var(--ecs-yellow); }
     .nav-badge {
       font-family: var(--font-body);
       font-size: 11px;
       font-weight: 500;
-      background: rgba(0,168,120,0.18);
-      color: var(--ecs-teal);
-      border: 1px solid rgba(0,168,120,0.3);
+      background: rgba(248,206,62,0.18);
+      color: var(--ecs-yellow);
+      border: 1px solid rgba(248,206,62,0.35);
       border-radius: 20px;
       padding: 3px 10px;
       letter-spacing: 0.02em;
@@ -96,7 +100,7 @@
       font-family: var(--font-head);
       font-size: 22px;
       font-weight: 700;
-      color: var(--ecs-navy);
+      color: var(--ecs-red);
       letter-spacing: -0.02em;
     }
     .page-subtitle {
@@ -130,7 +134,7 @@
       font-family: var(--font-head);
       font-size: 13px;
       font-weight: 600;
-      color: var(--ecs-navy);
+      color: var(--ecs-dark);
       text-align: center;
       outline: none;
     }
@@ -142,7 +146,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      background: var(--ecs-teal);
+      background: var(--ecs-red);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -153,8 +157,8 @@
       cursor: pointer;
       transition: background 0.15s;
     }
-    .btn-run:hover { background: #008f66; }
-    .btn-run svg { width: 14px; height: 14px; fill: #fff; }
+    .btn-run:hover { background: var(--ecs-red-dk); }
+    .btn-run svg { width: 14px; height: 14px; fill: var(--ecs-yellow); }
 
     /* ── Main layout ── */
     .main {
@@ -184,10 +188,8 @@
       top: 0; left: 0; right: 0;
       height: 3px;
     }
-    .kpi-card.teal::before  { background: var(--ecs-teal); }
-    .kpi-card.blue::before  { background: var(--ecs-blue); }
-    .kpi-card.amber::before { background: var(--ecs-amber); }
-    .kpi-card.navy::before  { background: var(--ecs-navy); }
+    .kpi-card.k-red::before    { background: var(--ecs-red); }
+    .kpi-card.k-yellow::before { background: var(--ecs-yellow); }
     .kpi-label {
       font-size: 11px;
       font-weight: 500;
@@ -200,9 +202,11 @@
       font-family: var(--font-head);
       font-size: 26px;
       font-weight: 700;
-      color: var(--ecs-navy);
+      color: var(--ecs-dark);
       line-height: 1;
     }
+    .kpi-card.k-red .kpi-value    { color: var(--ecs-red); }
+    .kpi-card.k-yellow .kpi-value { color: var(--ecs-yellow-dk); }
     .kpi-sub {
       font-size: 11px;
       color: var(--ecs-slate);
@@ -235,13 +239,13 @@
       font-family: var(--font-head);
       font-size: 14px;
       font-weight: 600;
-      color: var(--ecs-navy);
+      color: var(--ecs-dark);
     }
     .panel-count {
       font-size: 11px;
-      font-weight: 500;
-      background: var(--ecs-teal-lt);
-      color: #006b4f;
+      font-weight: 600;
+      background: var(--ecs-red-lt);
+      color: var(--ecs-red);
       border-radius: 20px;
       padding: 2px 9px;
     }
@@ -253,17 +257,17 @@
       padding: 0.9rem 1rem;
       margin-bottom: 0.5rem;
       cursor: pointer;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
       position: relative;
     }
     .match-card:hover {
-      border-color: var(--ecs-teal);
-      box-shadow: 0 0 0 3px rgba(0,168,120,0.08);
+      border-color: var(--ecs-red);
+      box-shadow: 0 0 0 3px rgba(141,29,69,0.08);
     }
     .match-card.selected {
-      border-color: var(--ecs-teal);
-      background: var(--ecs-teal-lt);
-      box-shadow: 0 0 0 3px rgba(0,168,120,0.12);
+      border-color: var(--ecs-red);
+      background: var(--ecs-red-lt);
+      box-shadow: 0 0 0 3px rgba(141,29,69,0.12);
     }
     .match-card-top {
       display: flex;
@@ -278,10 +282,10 @@
       font-family: var(--font-head);
       font-size: 13px;
       font-weight: 600;
-      color: var(--ecs-navy);
+      color: var(--ecs-dark);
     }
     .route-arrow {
-      color: var(--ecs-teal);
+      color: var(--ecs-red);
       font-size: 14px;
     }
     .conf-badge {
@@ -305,7 +309,7 @@
     .meta-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--ecs-teal);
+      background: var(--ecs-red);
       display: inline-block;
     }
 
@@ -335,17 +339,17 @@
     .detail-body { padding: 1rem 1.25rem 1.25rem; display: none; }
     .detail-match-id {
       font-size: 10px;
-      font-weight: 500;
-      color: var(--ecs-slate);
+      font-weight: 600;
+      color: var(--ecs-red);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       margin-bottom: 0.25rem;
     }
     .detail-title {
       font-family: var(--font-head);
       font-size: 16px;
       font-weight: 700;
-      color: var(--ecs-navy);
+      color: var(--ecs-dark);
       margin-bottom: 1rem;
     }
 
@@ -364,7 +368,7 @@
       font-size: 13px;
       padding: 5px 0;
       border-bottom: 1px solid var(--ecs-border);
-      color: var(--ecs-navy);
+      color: var(--ecs-dark);
     }
     .detail-row:last-child { border-bottom: none; }
     .detail-row-key { color: var(--ecs-slate); }
@@ -377,16 +381,18 @@
       margin-bottom: 1rem;
     }
     .impact-card {
-      background: var(--ecs-gray);
       border-radius: 8px;
       padding: 0.6rem 0.75rem;
     }
+    .impact-card.ic-red    { background: var(--ecs-red-lt); }
+    .impact-card.ic-yellow { background: var(--ecs-yellow-lt); }
     .impact-val {
       font-family: var(--font-head);
       font-size: 17px;
       font-weight: 700;
-      color: var(--ecs-teal);
     }
+    .ic-red .impact-val    { color: var(--ecs-red); }
+    .ic-yellow .impact-val { color: var(--ecs-yellow-dk); }
     .impact-lbl {
       font-size: 11px;
       color: var(--ecs-slate);
@@ -395,7 +401,7 @@
 
     .btn-confirm {
       width: 100%;
-      background: var(--ecs-navy);
+      background: var(--ecs-red);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -410,10 +416,10 @@
       justify-content: center;
       gap: 8px;
     }
-    .btn-confirm:hover { background: #0B4A8B; }
+    .btn-confirm:hover { background: var(--ecs-red-dk); }
     .btn-confirm svg { width: 16px; height: 16px; fill: #fff; }
     .btn-confirm.confirmed {
-      background: var(--ecs-teal);
+      background: #059669;
       cursor: default;
     }
 
@@ -427,7 +433,7 @@
     .conf-bar-fill {
       height: 100%;
       border-radius: 3px;
-      background: var(--ecs-teal);
+      background: linear-gradient(90deg, var(--ecs-red), #C0274F);
       transition: width 0.6s ease;
     }
 
@@ -442,7 +448,7 @@
       width: 20px;
       height: 20px;
       border: 2px solid var(--ecs-border);
-      border-top-color: var(--ecs-teal);
+      border-top-color: var(--ecs-red);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin: 0 auto 0.5rem;
@@ -455,7 +461,7 @@
       bottom: 1.5rem;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: var(--ecs-navy);
+      background: var(--ecs-dark);
       color: #fff;
       font-size: 13px;
       font-weight: 500;
@@ -464,6 +470,7 @@
       transition: transform 0.3s ease;
       z-index: 999;
       white-space: nowrap;
+      border-left: 3px solid var(--ecs-yellow);
     }
     #toast.show { transform: translateX(-50%) translateY(0); }
 
@@ -476,18 +483,27 @@
       border-top: 1px solid var(--ecs-border);
       margin-top: 2rem;
     }
-    footer a { color: var(--ecs-teal); text-decoration: none; }
+    footer a { color: var(--ecs-red); text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
     .status-dot {
       display: inline-block;
       width: 7px; height: 7px;
       border-radius: 50%;
-      background: var(--ecs-teal);
+      background: var(--ecs-yellow);
       margin-right: 5px;
       animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 4px var(--ecs-yellow);
     }
     @keyframes pulse {
       0%,100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      50%      { opacity: 0.3; }
+    }
+
+    @media (max-width: 960px) {
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .content-cols { grid-template-columns: 1fr; }
+      .detail-panel { position: static; }
+      .page-header-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
     }
   </style>
 </head>
@@ -501,7 +517,7 @@
     </div>
     <div class="nav-logo-text">ECS <span>Eco-Match</span></div>
   </a>
-  <span class="nav-badge">Proof of Concept · v1.0</span>
+  <span class="nav-badge">Proof of Concept · v1.1</span>
 </nav>
 
 <!-- HEADER -->
@@ -535,22 +551,22 @@
 
   <!-- KPI ROW -->
   <div class="kpi-row">
-    <div class="kpi-card teal">
+    <div class="kpi-card k-red">
       <div class="kpi-label">Matches found</div>
       <div class="kpi-value" id="kpiMatches">—</div>
       <div class="kpi-sub">viable trip-order pairs</div>
     </div>
-    <div class="kpi-card blue">
+    <div class="kpi-card k-yellow">
       <div class="kpi-label">Revenue unlocked</div>
       <div class="kpi-value" id="kpiRevenue">—</div>
       <div class="kpi-sub">from return loads</div>
     </div>
-    <div class="kpi-card amber">
+    <div class="kpi-card k-red">
       <div class="kpi-label">CO₂ saved</div>
       <div class="kpi-value" id="kpiCo2">—</div>
       <div class="kpi-sub">kg vs empty deadhead</div>
     </div>
-    <div class="kpi-card navy">
+    <div class="kpi-card k-yellow">
       <div class="kpi-label">Cost avoided</div>
       <div class="kpi-value" id="kpiCost">—</div>
       <div class="kpi-sub">empty-run diesel</div>
@@ -627,8 +643,6 @@
     btn.innerHTML = '<div class="spinner" style="margin:0;width:14px;height:14px;border-width:2px;display:inline-block"></div> Running…';
 
     document.getElementById('matchList').innerHTML = '<div class="loading-row"><div class="spinner"></div>Scanning TAS &amp; Business Central…</div>';
-
-    // Hide detail
     document.getElementById('detailEmpty').style.display = '';
     document.getElementById('detailBody').style.display = 'none';
     selectedIdx = null;
@@ -642,7 +656,6 @@
       allMatches = await matchRes.json();
       const summary = await summaryRes.json();
 
-      // Update KPIs
       document.getElementById('kpiMatches').textContent = summary.total_matches;
       document.getElementById('kpiRevenue').textContent = '€' + fmt(summary.total_revenue_eur);
       document.getElementById('kpiCo2').textContent    = fmt(summary.total_co2_saved_kg) + ' kg';
@@ -651,10 +664,10 @@
 
       renderList();
     } catch(e) {
-      document.getElementById('matchList').innerHTML = '<div class="loading-row" style="color:#991B1B">⚠ Could not reach API. Make sure uvicorn is running on port 8000.</div>';
+      document.getElementById('matchList').innerHTML = '<div class="loading-row" style="color:#8D1D45">⚠ Could not reach API. Run <code>bash start.sh</code> from the project root.</div>';
     } finally {
       btn.disabled = false;
-      btn.innerHTML = '<svg viewBox="0 0 16 16" style="width:14px;height:14px;fill:#fff"><path d="M3 2l10 6-10 6V2z"/></svg> Run matching';
+      btn.innerHTML = '<svg viewBox="0 0 16 16" style="width:14px;height:14px;fill:#F8CE3E"><path d="M3 2l10 6-10 6V2z"/></svg> Run matching';
     }
   }
 
@@ -703,11 +716,11 @@
       <div class="detail-title">${m.trip_destination} → ${m.pickup_location} → Zeebrugge</div>
 
       <div class="impact-row">
-        <div class="impact-card">
+        <div class="impact-card ic-red">
           <div class="impact-val">${fmt(m.co2_saved_kg)} kg</div>
           <div class="impact-lbl">CO₂ saved</div>
         </div>
-        <div class="impact-card">
+        <div class="impact-card ic-yellow">
           <div class="impact-val">€${fmt(m.cost_saved_eur)}</div>
           <div class="impact-lbl">Diesel cost avoided</div>
         </div>
@@ -727,15 +740,14 @@
         <div class="detail-row"><span class="detail-row-key">Client</span><span class="detail-row-val">${m.client}</span></div>
         <div class="detail-row"><span class="detail-row-key">Pickup</span><span class="detail-row-val">${m.pickup_location} (${m.pickup_distance_km} km)</span></div>
         <div class="detail-row"><span class="detail-row-key">Container</span><span class="detail-row-val">${m.container_size} · ${fmt(m.weight_kg)} kg</span></div>
-        <div class="detail-row"><span class="detail-row-key">Ready from</span><span class="detail-row-val">${fmtTime(m.order_deadline.replace('06:00','15:00'))}</span></div>
         <div class="detail-row"><span class="detail-row-key">Deadline</span><span class="detail-row-val">${fmtTime(m.order_deadline)}</span></div>
-        <div class="detail-row"><span class="detail-row-key">Revenue</span><span class="detail-row-val" style="color:var(--ecs-teal)">€${fmt(m.revenue_eur)}</span></div>
+        <div class="detail-row"><span class="detail-row-key">Revenue</span><span class="detail-row-val" style="color:var(--ecs-red)">€${fmt(m.revenue_eur)}</span></div>
       </div>
 
       <div class="detail-section">
         <div class="detail-section-label">Match confidence</div>
         <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--ecs-slate)">
-          <span>Score</span><span style="font-weight:600;color:var(--ecs-navy)">${m.confidence_score}%</span>
+          <span>Score</span><span style="font-weight:700;color:var(--ecs-red)">${m.confidence_score}%</span>
         </div>
         <div class="conf-bar-wrap"><div class="conf-bar-fill" style="width:${m.confidence_score}%"></div></div>
       </div>
@@ -771,7 +783,6 @@
     setTimeout(() => t.classList.remove('show'), 3200);
   }
 
-  // Auto-run on load after brief delay
   window.addEventListener('load', () => setTimeout(runMatch, 600));
 </script>
 </body>
